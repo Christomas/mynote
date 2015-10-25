@@ -1,0 +1,7 @@
+创建SSH Key
+    查看主目录下是否存在.ssh/id_rsa .ssh/id_rsa.pub
+        如不存在，运行：
+        $ ssh-keygen -t rsa -C "email_address"
+    登陆GitHub，设置SSH Keys，复制id_rsa.pub里的内容添加
+
+Git命令: git-cheatsheet.pdf
