@@ -1,0 +1,86 @@
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'Valloric/YouCompleteMe'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+
+filetype plugin indent on
+
+set encoding=utf-8 " 设定字符集
+set guifont=freemono\ 11
+set list
+set listchars=trail:-
+
+set wildmenu
+set mousemodel=popup
+
+set cul " 高亮光标所在行
+set go=
+" color ron
+" color desert
+" color torte
+set background=dark
+colorscheme solarized
+
+" allow backspacing over everything in insert mode
+set backspace=indent,eol,start
+
+" if has("vms")
+"   set nobackup		" do not keep a backup file, use versions instead
+" else
+"   set backup		" keep a backup file (restore to previous version)
+"   set undofile		" keep an undo file (undo changes after closing)
+" endif
+set nobackup
+
+set history=500		" keep 50 lines of command line history
+set ruler		" show the cursor position all the time
+set showcmd		" display incomplete commands
+set incsearch		" do incremental searching
+
+" In many terminal emulators the mouse works just fine, thus enable it.
+if has('mouse')
+  set mouse=a
+endif
+
+syntax on
+set hlsearch
+
+" Enable file type detection.
+" Use the default filetype settings, so that mail gets 'tw' set to 72,
+" 'cindent' is on in C files, etc.
+" Also load indent files, to automatically do language-dependent indenting.
+
+set autoindent		" always set autoindenting on
+
+" TAB换为4个空格
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set expandtab
+set smarttab
+
+set autoindent " 自动缩进
+set smartindent " 智能缩进
+
+set number " 显示行号
+set clipboard+=unnamed " 与windows共享剪贴板
+
+" 显示中文帮助
+set helplang=cn
+
+set scrolloff=3 " 光标移动到buffer的顶部和底部时保持3行距离
+
+set magic " 设置魔术
+set guioptions-=T " 隐藏工具栏
+set guioptions-=m " 隐藏菜单栏
