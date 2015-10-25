@@ -1,0 +1,39 @@
+添加快源插件：
+    sudo vi /etc/dnf/dnf.conf
+    末行添加：
+    fastestmirror=true
+
+RPMFUSHION：
+    sudo dnf install --nogpgcheck http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-22.noarch.rpm
+    sudo dnf install --nogpgcheck http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-22.noarch.rpm
+
+google-chrome：
+    sudo vim /etc/yum.repos.d/google-chrome.repo添加
+    [google-chrome]
+    name=google-chrome - \$basearch
+    baseurl=http://dl.google.com/linux/chrome/rpm/stable/\$basearch
+    enabled=1
+    gpgcheck=1
+    gpgkey=https://dl-ssl.google.com/linux/linux_signing_key.pub
+
+chrome地址栏输入卡顿问题解决方案：
+    xfce：设置-外观-字体，修改为DejaVu Sans
+
+fcitx输入法安装
+    sudo dnf install fcitx fcitx-config-tool fcitx-table-wbpy
+    修改中括号：
+        sudo cp /usr/share/fcitx/data/puc.mb.zh_CN ~/.config/fcitx/data/
+        vi ~/.config/fcitx/data/puc.mb.zh_CN
+
+vim安装、配置YouCompleteMe
+    sudo dnf install vim-X11
+    安装vundle及配置    http://github.com/VundleVim/Vundle.vim
+    安装YCM及配置       https://github.com/Valloric
+        安装过程需要gcc，gcc-c++，python-devel，可dnf安装
+    外部程序文本复制到vim：外部复制后，回到vim命令行模式输入"+p或"*p
+
+python相关
+    pyvenv只支持python3.3及以上版本，2.7及以下版本请用virtualen：v
+    sudo pip install virtualenv
+    pip3命令无法使用：alias pip3='python3 -m pip'或升级pip3：
+    sudo python3 -m pip install --upgrade pip
