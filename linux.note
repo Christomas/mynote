@@ -24,6 +24,13 @@ fcitx输入法安装
     修改中括号：
         sudo cp /usr/share/fcitx/data/puc.mb.zh_CN ~/.config/fcitx/data/
         vi ~/.config/fcitx/data/puc.mb.zh_CN
+    gnome3中可能遇到的问题
+        gsetting配置
+        这时候该使用 im-chooser 选择输入法为fcitx后报错显示：
+        GDBus.Error:org.gtk.GDBus.UnmappedGError.Quark. imsettings 2derror_2dquark.Code5: Current desktop isn’t targeted by IMSettings.
+        需要对gsetting设定：（在终端下输入运行）
+        $ gsettings set org.gnome.settings-daemon.plugins.keyboard active false
+        
 
 vim安装、配置YouCompleteMe
     sudo dnf install vim-X11
@@ -37,3 +44,8 @@ python相关
     sudo pip install virtualenv
     pip3命令无法使用：alias pip3='python3 -m pip'或升级pip3：
     sudo python3 -m pip install --upgrade pip
+
+虚拟打印机
+    $ sudo dnf install cups cups-pdf
+    $ sudo vi /etc/cups/cups-pdf.conf # 修改Out默认输出位置
+    或在浏览器地址栏输入localhost:631修改
