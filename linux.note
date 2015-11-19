@@ -20,10 +20,10 @@ chrome地址栏输入卡顿问题解决方案：
     xfce：设置-外观-字体，修改为DejaVu Sans
 
 fcitx输入法安装
-    sudo dnf install fcitx fcitx-config-tool fcitx-table-wbpy
+    sudo dnf install fcitx fcitx-configtool fcitx-table-chinese
     修改中括号：
-        sudo cp /usr/share/fcitx/data/puc.mb.zh_CN ~/.config/fcitx/data/
-        vi ~/.config/fcitx/data/puc.mb.zh_CN
+        sudo cp /usr/share/fcitx/data/punc.mb.zh_CN ~/.config/fcitx/data/
+        vi ~/.config/fcitx/data/punc.mb.zh_CN
     gnome3中可能遇到的问题
         gsetting配置
         这时候该使用 im-chooser 选择输入法为fcitx后报错显示：
