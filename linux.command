@@ -16,3 +16,9 @@ $ tar -xjf name.tar.bz2         # 解压tar.bz2压缩包
 $ tar -cZf name.tar.Z file      # tar.Z格式压缩
 $ tar -xZf name.tar.Z           # 解压tar.Z压缩包
 $ tar -xvf name.tar             # 解压时显示详细信息（-v）
+
+格式化U盘
+sudo umount /media/disk         # 卸载
+sudo mkfs.vfat /dev/sdb         # 格式化
+其他格式：  mkfs mkfs.cramfs mkfs.ext3 mkfs.ext4dev mkfs.msdos mkfs.vfat
+            mkfs.bfs mkfs.ext2 mkfs.ext4 mkfs.minix mkfs.ntfs
