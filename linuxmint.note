@@ -8,3 +8,8 @@ LAMP环境搭建
     $ sudo add-apt-repository ppa:nijel/phpmyadmin
     $ sudo apt-get update
     $ sudo apt-get install phpmyadmin
+安装本地deb包（并解决依赖）
+    $ sudo gdebi xxx.deb
+    或
+    $ sudo dpkg -i xxx.deb
+    $ sudo apt-get -f install
