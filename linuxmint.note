@@ -1,15 +1,53 @@
+====================
 LAMP环境搭建
-    $ sudo apt-get update
-    $ sudo apt-get install apache2
-    $ sudo apt-get install php5 libapache2-mod-php5
-    $ sudo apt-get install mysql-server
-    $ sudo mysql_secure_installation
-    $ sudo apt-get install libapache2-mod-auth-mysql php5-mysql
-    $ sudo add-apt-repository ppa:nijel/phpmyadmin
-    $ sudo apt-get update
-    $ sudo apt-get install phpmyadmin
+====================
+$ sudo apt-get update
+$ sudo apt-get install apache2
+$ sudo apt-get install php5 libapache2-mod-php5
+$ sudo apt-get install mysql-server
+$ sudo mysql_secure_installation
+$ sudo apt-get install libapache2-mod-auth-mysql php5-mysql
+$ sudo add-apt-repository ppa:nijel/phpmyadmin
+$ sudo apt-get update
+$ sudo apt-get install phpmyadmin
+====================
 安装本地deb包（并解决依赖）
-    $ sudo gdebi xxx.deb
-    或
-    $ sudo dpkg -i xxx.deb
-    $ sudo apt-get -f install
+====================
+$ sudo gdebi xxx.deb
+或
+$ sudo dpkg -i xxx.deb
+$ sudo apt-get -f install
+====================
+安装Sublime Text 3
+====================
+    ========================
+    解决中文输入问题，需要fcitx
+    ========================
+    $ sudo apt-get install sublime-text
+    $ sudo apt-get update
+    $ sudo apt-get upgrade
+    $ git clone https://github.com/lyfeyaj/sublime-text-imfix.git
+    $ cd sublime-text-imfix
+    $ ./sublime-imfix
+    Re-login X windows
+    ============
+    安装插件管理器
+    ============
+    ctrl+`调出命令行工具输入命令：
+    import urllib.request,os,hashlib; h = '7183a2d3e96f11eeadd761d777e62404' + 'e330c659d4bb41d3bdf022e94cab3cd0'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)
+    回车等待安装成功
+    =======
+    安装插件
+    =======
+    ctrl+shift+p调出插件管理器
+    常用插件：
+    Emmet                   前端神器
+    jQuery                  jQuery支持
+    JsFormat                Js格式化
+    DocBlockr               快速注释（块注释）
+    ColorPicker             颜色拾取
+    SideBarEnhancements     边栏增强
+    Anaconda                Python神器
+    Djaneiro                Django支持
+    Git                     Git支持
+    GitGutter               Git修改标记
