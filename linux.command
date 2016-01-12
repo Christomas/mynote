@@ -2,6 +2,8 @@ alias用法：
 $ alias name='fullname'         # 添加或更改别名
 $ unalias name                  # 删除别名
 
+软链接
+$ ln -s file filesoft
 
 压缩解压：
 $ tar -cf name.tar file         # tar格式打包
