@@ -2,4 +2,9 @@
 $ sudo chown root:root brcmfmac4350-pcie.bin BCM-0a5c-6412.hcd
 $ sudo cp -t /lib/firmware/brcm/ BCM-0a5c-6412.hcd brcmfmac4350-pcie.bin
 到 http://kernel.ubuntu.com/~kernel-ppa/mainline/ 下载安装最新内核（4.4亲测有效）
+$ cd /tmp
+$ wget http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.4-wily/linux-headers-4.4.0-040400-generic_4.4.0-040400.201601101930_amd64.deb
+$ wget http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.4-wily/linux-headers-4.4.0-040400_4.4.0-040400.201601101930_all.deb
+$ wget http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.4-wily/linux-image-4.4.0-040400-generic_4.4.0-040400.201601101930_amd64.deb
+$ sudo gdebi linux-*.deb
 关闭闭源驱动，重启
