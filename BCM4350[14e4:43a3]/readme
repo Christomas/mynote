@@ -1,0 +1,5 @@
+用法：
+$ sudo chown root:root brcmfmac4350-pcie.bin BCM-0a5c-6412.hcd
+$ sudo cp -t /lib/firmware/brcm/ BCM-0a5c-6412.hcd brcmfmac4350-pcie.bin
+到 http://kernel.ubuntu.com/~kernel-ppa/mainline/ 下载安装最新内核（4.4亲测有效）
+关闭闭源驱动，重启
