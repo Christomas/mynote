@@ -48,7 +48,7 @@ gpgkey=https://dl-ssl.google.com/linux/linux_signing_key.pub
 ===============
 其他软件安装
 ===============
-# 安装配置fcitx https://wiki.archlinux.org/index.php/Fcitx_(简体中文)
+##### 安装配置fcitx https://wiki.archlinux.org/index.php/Fcitx_(简体中文)
 $ sudo dnf install fcitx fcitx-configtool fcitx-table-chinese
 $ 修改中括号：
 $ sudo cp /usr/share/fcitx/data/punc.mb.zh_CN ~/.config/fcitx/data/
@@ -68,7 +68,7 @@ export QT_IM_MODULE=fcitx
 export XMODIFIERS="@im=fcitx"
 注销重新登录
 
-# Vim安装配置
+##### Vim安装配置
 $ sudo dnf install vim-enhanced vim-X11
 $ sudo cp myvimrc ~/.vimrc
 # 安装vundle及配置    http://github.com/VundleVim/Vundle.vim
@@ -76,13 +76,17 @@ $ sudo cp myvimrc ~/.vimrc
 # 安装过程需要gcc，gcc-c++，python-devel，可dnf安装
 # 外部程序文本复制到vim：外部复制后，回到vim命令行模式输入"+p或"*p
 
-# python相关
+##### python相关
 # pyvenv只支持python3.3及以上版本，2.7及以下版本请用virtualen：v
 $ sudo pip install virtualenv
 # pip3命令无法使用：
 $ alias pip3='python3 -m pip'或升级pip3：
 $ sudo python3 -m pip install --upgrade pip
 
-# 虚拟打印机
+##### Django相关
+$ sudo dnf install python-devel python3-devel mysql-devel redhat-rpm-config
+$ pip install mysqlclient  # 此处需要以上软件包
+
+##### 虚拟打印机
 $ sudo dnf install cups cups-pdf
 $ sudo vi /etc/cups/cups-pdf.conf  # 修改Out默认输出位置，或在浏览器地址栏输入localhost:631修改
