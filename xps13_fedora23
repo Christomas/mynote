@@ -48,7 +48,7 @@ gpgkey=https://dl-ssl.google.com/linux/linux_signing_key.pub
 ===============
 其他软件安装
 ===============
-# 安装配置fcitx
+# 安装配置fcitx https://wiki.archlinux.org/index.php/Fcitx_(简体中文)
 $ sudo dnf install fcitx fcitx-configtool fcitx-table-chinese
 $ 修改中括号：
 $ sudo cp /usr/share/fcitx/data/punc.mb.zh_CN ~/.config/fcitx/data/
@@ -59,6 +59,14 @@ $ vim ~/.config/fcitx/data/punc.mb.zh_CN
 # GDBus.Error:org.gtk.GDBus.UnmappedGError.Quark. imsettings 2derror_2dquark.Code5: Current desktop isn’t targeted by IMSettings.
 # 需要对gsetting设定：（在终端下输入运行）
 $ gsettings set org.gnome.settings-daemon.plugins.keyboard active false
+# KDE中可能遇到的问题：某此系统界面无法调用输入法
+$ sudo dnf install fcitx-qt4 fcitx-qt5 kcm-fcitx
+$ vim ~/.xprofile
+添加
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS="@im=fcitx"
+注销重新登录
 
 # Vim安装配置
 $ sudo dnf install vim-enhanced vim-X11
