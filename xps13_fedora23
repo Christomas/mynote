@@ -20,6 +20,14 @@ $ sudo vi /etc/dnf/dnf.conf
 fastestmirror=true
 
 # 更新Kernel
+方法一：
+$ wget https://repos.fedorapeople.org/repos/thl/kernel-vanilla.repo
+$ sudo chown root:root kernel-vanilla.repo
+$ sudo chmod 644 kernel-vanilla.repo
+$ sudo mv kernel-vanilla.repo /etc/yum.repos.d/
+$ sudo dnf config-manager --set-enabled kernel-vanilla-stable  # 启用kernel源，后缀可以为mainline mainline-wo-mergew stable stable-rc fedora. --set-disabled停用
+$ sudo dnf update  # 更新kernel
+方法二：
 $ sudo dnf update kernel  # 此处一般更新到4.3.3
 到 https://kojipkgs.fedoraproject.org/packages/kernel/ 下载4.4以上kernel
 $ cd kernel_dir
