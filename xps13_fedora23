@@ -19,14 +19,18 @@ $ sudo vi /etc/dnf/dnf.conf
 末行添加：
 fastestmirror=true
 
-# 更新Kernel
+# 更新Kernel到4.4+，为安装BCM4350驱动作准备
 方法一：
 $ wget https://repos.fedorapeople.org/repos/thl/kernel-vanilla.repo
 $ sudo chown root:root kernel-vanilla.repo
 $ sudo chmod 644 kernel-vanilla.repo
 $ sudo mv kernel-vanilla.repo /etc/yum.repos.d/
-$ sudo dnf config-manager --set-enabled kernel-vanilla-stable  # 启用kernel源，后缀可以为mainline mainline-wo-mergew stable stable-rc fedora. --set-disabled停用
+# 永久性启用该repo
+# 后缀可以为mainline mainline-wo-mergew stable stable-rc fedora
+# --set-disabled停用
+$ sudo dnf config-manager --set-enabled kernel-vanilla-stable
 $ sudo dnf update  # 更新kernel
+# 重启后出错：double free at 0x486ee360，Bois关闭Secure boot后正常
 方法二：
 $ sudo dnf update kernel  # 此处一般更新到4.3.3
 到 https://kojipkgs.fedoraproject.org/packages/kernel/ 下载4.4以上kernel
@@ -56,6 +60,9 @@ gpgkey=https://dl-ssl.google.com/linux/linux_signing_key.pub
 ===============
 其他软件安装
 ===============
+##### KDE中文界面
+$ sudo dnf install kde-l10n-zh_CN
+
 ##### 安装配置fcitx https://wiki.archlinux.org/index.php/Fcitx_(简体中文)
 $ sudo dnf install fcitx fcitx-configtool fcitx-table-chinese
 $ 修改中括号：
