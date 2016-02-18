@@ -33,6 +33,7 @@ $ sudo dnf update  # 更新kernel
 # 重启后出错：double free at 0x486ee360，Bois关闭Secure boot后正常
 # stable源升级的4.4.1出现关机卡在Fedora Logo的情况
 # 换mainline源升级4.5无问题
+# 后又出现无法关机的问题，怀疑更新后安装kernel-header的问题，用方法二
 方法二：
 $ sudo dnf update kernel  # 此处一般更新到4.3.3
 到 https://kojipkgs.fedoraproject.org/packages/kernel/ 下载4.4以上kernel
