@@ -19,6 +19,17 @@ $ tar -cZf name.tar.Z file      # tar.Z格式压缩
 $ tar -xZf name.tar.Z           # 解压tar.Z压缩包
 $ tar -xvf name.tar             # 解压时显示详细信息（-v）
 
+查看文件系统使用情况
+$ df -h
+
+备份和恢复
+$ dump -0uj -f somebak.bz2 somedisk
+$ dump -0j -f somebak.bz2 subdirectory
+$ restore -C somebak.bz2  # 比较备份与现实文件
+$ restore -t somebak.bz2  # 查看备份文件
+$ restore -i somebak.bz2  # 交互式恢复备份
+$ restore -r somebak.bz2  # 恢复
+
 格式化U盘
 sudo umount /media/disk         # 卸载
 sudo mkfs.vfat /dev/sdb         # 格式化
