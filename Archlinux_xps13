@@ -1,0 +1,10 @@
+# Archlinux安装手记
+
+一、安装盘准备
+# 使用dd命令
+sudo dd if=archlinux.iso of=/dev/sdb
+
+二、BOIS准备
+关闭secure boot
+
+三、
