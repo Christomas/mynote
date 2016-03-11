@@ -7,4 +7,80 @@ sudo dd if=archlinux.iso of=/dev/sdb
 二、BOIS准备
 关闭secure boot
 
-三、
+三、安装过程
+1、U盘启动
+2、要确认是否进入UEFI启动模式，检查下面目录是否有文件：
+# ls /sys/firmware/efi/efivars
+3、连接到Internet
+安装时内核版本<4.4，不支持wifi驱动，用手机USB共享网络
+# ls /sys/class/net
+lo eth0             # 输出可用网络设备，用第二个进行连接
+# ip link set eth0 up
+# dhcpcd eth0
+4、更新系统时间
+# timedatectl set-ntp true
+5、准备分区
+# parted /dev/sda
+# 为UEFI系统重建硬盘GPT分区表，将删除整个硬盘分区表
+(parted) mklabel gpt
+# ！注意：若想保留win进行双系统安装，不要执行上述操作
+(parted) unit MB        # 切换显示单位
+(parted) print          # 打印分区表
+(parted) rm Number      # 删除分区，以实际分区号替换Number
+# 以下起点、终点数值按实际情况自行设置
+(parted) mkpart ESP fat32 1M(起点) 513M(终点)    # 创建EFI系统分区
+(parted) set Number boot on             # 设置为启动分区，以实际分区号替换Number
+(parted) mkpart primary ext4 513M(起点) 20.5G(终点)
+(parted) mkpart primary linux-swap 20.5G(起点) 24.5G(终点)
+(parted) mkpart primary ext4 24.5G(起点) 100%(终点)
+# 以下是分区后的分区表，避免使用win的EFI启动分区，以免造成破坏使win无法启动
+(parted) print
+Model: ATA SAMSUNG SSD CM87 (scsi)
+Disk /dev/sda: 128GB
+Sector size (logical/physical): 512B/512B
+Partition Table: gpt
+Disk Flags:
+Number  Start   End     Size    File system     Name                          标志
+ 1      1049kB  473MB   472MB   ntfs            Basic data partition          隐藏分区, diag
+ 2      473MB   578MB   105MB   fat32           EFI system partition          启动, esp
+ 3      578MB   595MB   16.8MB                  Microsoft reserved partition  msftres
+ 4      595MB   31.4GB  30.8GB  ntfs            Basic data partition          msftdata
+ 5      31.4GB  95.8GB  64.4GB  ntfs            Basic data partition          msftdata
+ 6      95.8GB  96.3GB  512MB   fat32                                         启动, esp
+ 7      96.3GB  114GB   17.7GB  ext4
+ 8      114GB   116GB   2000MB  linux-swap(v1)
+ 9      116GB   128GB   12.0GB  ext4
+(parted) quit          # 退出parted分区工具
+6、格式化并挂载分区
+# mkfs.vfat -F32 /dev/sda6     # UEFI启动分区格式化
+# mkfs.ext4 /dev/sda7          # 格式化其他分区
+# mkfs.ext4 /dev/sda9          # 格式化其他分区
+# mkswap /dev/sda8             # 格式化交换分区
+# swapon /dev/sda8             # 启用交换分区
+# 挂载分区
+# mount /dev/sda7 /mnt         # 挂载根分区 /
+# mkdir /mnt/home
+# mount /dev/sda9 /mnt/home    # 挂载home分区 /home
+# mkdir /mnt/boot
+# mount /dev/sda6 /mnt/boot    # 挂载启动分区 /boot
+7、安装基本软件包
+# 选择安装镜像，将中国的源放在前面
+# vim /etc/pacman.d/mirrorlist
+# 安装
+# pacstrap -i /mnt base base-devel
+8、配置
+# genfstab -U -p /mnt >> /mnt/etc/fstab
+# cat /mnt/etc/fstab        # 查看系统文件分区表是否正确
+9、进入新系统，设置Locale
+# arch-chroot /mnt /bin/bash
+# vi /etc/locale.gen        # 添加
+en_US.UTF-8 UTF-8
+zh_CN.UTF-8 UTF-8
+zh_TW.UTF-8 UTF-8
+# locale-gen
+# echo LANG=en_US.UTF-8 > /etc/locale.conf
+10、时间
+# tzselect          # 选择时区
+# ln -s /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+# hwclock --systohc --utc       # 设置时间标准 为 UTC，并调整 时间漂移，会导致win时间混乱
+

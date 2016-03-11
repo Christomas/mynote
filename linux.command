@@ -31,7 +31,12 @@ $ restore -i somebak.bz2  # 交互式恢复备份
 $ restore -r somebak.bz2  # 恢复
 
 格式化U盘
-sudo umount /media/disk         # 卸载
-sudo mkfs.vfat /dev/sdb         # 格式化
+$ sudo umount /media/disk         # 卸载
+$ sudo mkfs.vfat /dev/sdb         # 格式化
 其他格式：  mkfs mkfs.cramfs mkfs.ext3 mkfs.ext4dev mkfs.msdos mkfs.vfat
             mkfs.bfs mkfs.ext2 mkfs.ext4 mkfs.minix mkfs.ntfs
+
+PDF 操作
+$ convert *.jpeg test.pdf
+$ pdfunite source1.pdf source2.pdf dest.pdf
+$ pdfseperate
